@@ -52,19 +52,19 @@ RESET' &> /dev/null
 logformat="%cd,%cn,%b"
 function log {
   githead=`tail -1 gitwar.games`
-  log=`git log --pretty="$logformat" "$githead".. | head -n -2 | tac`
+  log=`git log --pretty="$logformat" "$githead".. | head -n -2 | tac | sed -e '$!N;s/^\n//' -e '$!N;s/\n$//'`
   echo "$log"
 }
 
 function firstLogLine {
   githead=`tail -1 gitwar.games`
-  log=`git log --pretty="$logformat" "$githead".. | head -n -2 | tac`
+  log=`git log --pretty="$logformat" "$githead".. | head -n -2 | tac | sed -e '$!N;s/^\n//'`
   echo "$log" | head -1
 }
 
 function lastLogLine {
   githead=`tail -1 gitwar.games`
-  log=`git log --pretty="$logformat" "$githead".. | head -n -2 | tac`
+  log=`git log --pretty="$logformat" "$githead".. | head -n -2 | tac | sed -e '$!N;s/\n$//'`
   echo "$log" | tail -1
 }
 
