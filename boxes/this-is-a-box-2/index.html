@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Gitwar | Tyler Benziger</title>
+  <title>This is a box | Tyler Benziger</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <link rel="shortcut icon" href="http://gravatar.com/avatar/9f5734a7063a4c48139f4999f3100167
@@ -55,12 +55,12 @@
                 <li><a href="http://tybenz.com/about">About</a></li>
                 
                 
-                <li><a href="http://tybenz.com/projects" class="active">Projects</a></li>
+                <li><a href="http://tybenz.com/projects">Projects</a></li>
                 
             </ul>
         </nav>
         <div class="nav-slider">
-            <div class="nav-selection projects"></div>
+            <div class="nav-selection "></div>
         </div>
     </div>
 </header>
@@ -69,77 +69,9 @@
     <section id="main">
         <article class="container">
           
-            <h1 class="hero">Gitwar <img src="https://secure.gravatar.com/avatar/a52f0b5df73d445c85ffcbb6ac4b1d8b?s=90"></h1>
+            <h1 class="hero">This is a box</h1>
           
-          <p>A platform for git-based turn-based command-line games.</p>
-
-<p>Gitwar and each of its games are written in BASH. That’s right.
-Git, shell scripting, and playing games has never been so awesome.</p>
-
-<h2 id="games">Games</h2>
-
-<ol>
-  <li><a href="http://github.com/gitwar/gitfight">Gitfight</a></li>
-  <li><a href="http://github.com/gitwar/gitchess">Gitchess</a></li>
-  <li>Gitcastle - Coming Soon</li>
-</ol>
-
-<h2 id="how-to-play">How to play</h2>
-
-<ol>
-  <li>Fork the repo of the game you want to play and add your opponent as a collaborator*</li>
-  <li>Create a branch for your game and make sure your opponent knows which branch to pull from</li>
-  <li>Tweak <code>gitwar.users</code> if necessary (depends on the game)</li>
-  <li>Run <code>./setup &amp;&amp; ./gitwar -c</code> to download gitwar and setup your game</li>
-  <li>Run the executable of your game and start playing</li>
-</ol>
-
-<p>* If you don’t have anyone to play with. Submit an <a href="https://github.com/gitwar/gitwar/issues">issue</a>
-saying something like, “I need a partner to play Gitchess” or “Who wants to get their butt kicked at
-Gitfight?”, and wait for someone to reply.</p>
-
-<h2 id="writing-games">Writing games</h2>
-
-<p>The gitwar script is actually very dumb about
-what’s going on in the game. It just adds files, commits, pushes,
-pulls, and spits out a log. Normal git stuff. The game script can be pretty much anything you want.</p>
-
-<p>Here’s the best way to use gitwar when commiting an action:</p>
-
-<p><code>bash
-getPlayerMove
-executeMove
-../gitwar "$human_readable_commit_message" "$machine_readable_action"
-</code></p>
-
-<p>Reading the log:</p>
-
-<p><code>bash
-log=`../gitwar -l`
-# loop over the log to recreate
-while read line; do
-  action=`echo "$log" | cut -d, -f3`
-  # recreate all past actions
-done &lt; &lt;(echo "$log")
-</code></p>
-
-<p>I also suggest having a file for each users’ name and
-properties. See <code>gitwar.users</code> in either gitfight or gitchess.</p>
-
-<p>Make sure you send a pull request with your new game when you’re done so everyone can enjoy it.</p>
-
-<h2 id="note">Note</h2>
-
-<p>This is more for fun than for anything else. It’s just yet another way
-of showing how cool git and Github are.</p>
-
-<p>Have fun!</p>
-
-<p>* <a href="http://thenounproject.com/noun/soldier/#icon-No1697">Gitwar logo</a> designed
-by <a href="http://thenounproject.com/Simon Child">Simon Child</a> from the <a href="http://thenounproject.com">Noun
-Project</a> and <a href="http://twitter.com/jasonlong">Jason
-Long</a> from
-<a href="http://git-scm.com/downloads/logos">git-scm.com</a>.</p>
+          
 
         </article>
     </section>
