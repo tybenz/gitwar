@@ -1,0 +1,19 @@
+{
+  "name": "gitwar-new",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/gitwar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "~2.2.2",
+    "gift": "~0.4.2",
+    "class.extend": "~0.9.1",
+    "prompt": "~0.2.13",
+    "lodash-node": "~2.4.1",
+    "colors": "~0.6.2"
+  }
+}
