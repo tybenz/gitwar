@@ -19,7 +19,7 @@ var Gitwar = {
 
     init: function() {
         _repo = $( git( process.cwd() ) );
-        return Promise.all( [ this.head(), _repo.pullAsync, this.getUsers() ] );
+        return Promise.all( [ this.head(), this.getUsers() ] );
     },
 
     addLog: function( message ) {
