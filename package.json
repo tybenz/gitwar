@@ -1,6 +1,6 @@
 {
   "name": "gitwar",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Git-based command-line gaming",
   "main": "gitwar.js",
   "dependencies": {

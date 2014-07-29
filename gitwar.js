@@ -34,9 +34,19 @@ var Gitwar = {
     logs: function() {
         return _repo.commitsAsync( 'master', MAX_COMMITS )
         .then( function( commits ) {
-            return _.map( commits, function( com ) {
-                return JSON.parse( com.message );
-            });
+            return _.reduce( commits, function( memo, com ) {
+                try {
+                    var obj = JSON.parse( com.message );
+                    if ( obj.user ) {
+                        memo.push( obj );
+                    }
+                } catch ( e ) {
+                    // Nothing happens - try/catch to safeguard against commits
+                    // that aren't JSON parse-able
+                }
+
+                return memo;
+            }, [] );
         });
     },
 
