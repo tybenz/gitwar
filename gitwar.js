@@ -49,7 +49,9 @@ var Gitwar = {
             var file = results[ 0 ];
             var config = results[ 1 ];
 
-            _.each( JSON.parse( file ), function( user ) {
+            Gitwar.users = JSON.parse( file );
+
+            _.each( Gitwar.users, function( user ) {
                 if ( user == config.items[ 'user.name' ] ) {
                     Gitwar.me = user;
                 } else {
