@@ -1,6 +1,6 @@
 var Promise = require( 'bluebird' );
 var _ = require( 'lodash-node' );
-var git = require( 'gift' );
+var git = require( 'regift' );
 var $ = function( obj ) {
     return Promise.promisifyAll( obj );
 };
