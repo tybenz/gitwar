@@ -12,6 +12,12 @@ var _head = null;
 
 var MAX_COMMITS = 1000;
 
+var pad = function( n, width, z ) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array( width - n.length + 1 ).join( z ) + n;
+};
+
 var Gitwar = {
     me: null,
 
@@ -50,8 +56,12 @@ var Gitwar = {
         });
     },
 
+    masterUser: function() {
+        return Gitwar.users[ 0 ] == Gitwar.me;
+    },
+
     getUsers: function() {
-        Promise.all([
+        return Promise.all([
             fs.readFileAsync( path.join( process.cwd(), 'users.json' ) ),
             _repo.configAsync()
         ])
@@ -68,6 +78,8 @@ var Gitwar = {
                     Gitwar.opponent = user;
                 }
             });
+
+            return Gitwar.users;
         });
     },
 
@@ -99,6 +111,32 @@ var Gitwar = {
             } else {
                 fn( JSON.parse( commits[ 0 ].message ) );
             }
+        });
+    },
+
+    newGame: function() {
+        var newBranchName = '';
+
+        return _repo.branchAsync()
+        .then( function( branch ) {
+            var branchName = branch.name;
+            var regex = /^[^0-9]*/;
+            var branchRoot = branch.name.match( regex )[ 0 ];
+            var gameNum = parseInt( branchName.replace( /^[^0-9]*/, '' ) );
+            newBranchName = branchRoot + pad( gameNum + 1, 3 );
+            return _repo.checkoutAsync( newBranchName, { orphan: true } );
+        })
+        .then( function( newBranch ) {
+            return _repo.addAsync( [ 'users.json' ] );
+        })
+        .then( function() {
+            return _repo.commitAsync( '{ "start": true }' );
+        })
+        .then( function() {
+            return _repo.pushAsync( 'origin', newBranchName );
+        })
+        .then( function() {
+            return newBranchName;
         });
     },
 
