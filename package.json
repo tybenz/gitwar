@@ -10,7 +10,8 @@
     "regift": "~0.4.7",
     "lodash-node": "~2.4.1",
     "oauth": "~0.9.12",
-    "commander": "~2.3.0"
+    "commander": "~2.3.0",
+    "request": "~2.42.0"
   },
   "devDependencies": {},
   "scripts": {

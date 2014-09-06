@@ -9,6 +9,7 @@ var $ = function( obj ) {
       filter: function() { return true; }
   });
 };
+var request = Promise.promisify( require( 'request' ) );
 var fs = $( require( 'fs' ) );
 var oauth = $(
     new OAuth2(
@@ -43,7 +44,7 @@ var CLI = {
                 'https://api.github.com/authorizations',
                 { 'Authorization': 'Basic ' + new Buffer( username + ':' + password ).toString( 'base64' ) },
                 JSON.stringify({
-                    scopes: [ 'public_repo' ],
+                    scopes: [ 'repo' ],
                     note: 'Gitwar'
                 }),
                 null
@@ -81,9 +82,37 @@ var CLI = {
         this._accessToken = data.token;
         this._username = data.username;
         fs.writeFileAsync( getHomeDir() + '/.gitwar', JSON.stringify( data ) );
+    },
+
+    addUserToRepo: function() {
+        return request({
+            method: 'PUT',
+            url: 'https://api.github.com/repos/iambrandnew/gitwar/collaborators/tybenz',
+            headers: {
+                Authorization: 'token ' + this._accessToken,
+                'Content-Length': 0,
+                'User-Agent': 'Gitwar'
+            }
+        })
+        .bind( this )
+        .then( function( response ) {
+            var body = response[ 0 ].body;
+            if ( body ) {
+                body = JSON.parse( body );
+                throw new Error( JSON.stringify( body ) );
+            }
+        })
+        .catch( function( err ) {
+            console.log( err );
+        });
     }
 };
 
-CLI.githubLogin();
+CLI.githubLogin().then( function() {
+    CLI.addUserToRepo();
+})
+.catch( function( err ) {
+    console.log(err);
+});
 
 module.exports = CLI;
