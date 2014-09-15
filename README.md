@@ -14,7 +14,9 @@ Some games that I have in the works are...
 - [Gitfight] [1]: Virtual boxing
 - [Gitchess] [2]: Chess, duh!
 - [Gitpoke] [3]: Pokemon battles!
+- Gitgo: Go board game (Coming soon)
 
 [1]: https://github.com/tybenz/gitfight
 [2]: https://github.com/tybenz/gitchess
 [3]: https://github.com/tybenz/gitpoke
+
