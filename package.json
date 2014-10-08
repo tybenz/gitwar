@@ -9,7 +9,9 @@
     "colors": "~0.6.2",
     "regift": "~0.4.7",
     "lodash-node": "~2.4.1",
-    "prompt": "~0.2.13"
+    "oauth": "~0.9.12",
+    "commander": "~2.3.0",
+    "request": "~2.42.0"
   },
   "devDependencies": {},
   "scripts": {
